@@ -24,7 +24,7 @@
     Function calcular(ByVal activo As Double) As Double
         Dim calculo As Double = 0.00
         For Each rango In rangos
-            If rango(0) < activo And rango(1) > activo Then
+            If rango(0) <= activo And rango(1) >= activo Then
                 calculo = Math.Round((((activo - rango(0)) / 1000) * rango(3)) + rango(2), 2)
             End If
         Next

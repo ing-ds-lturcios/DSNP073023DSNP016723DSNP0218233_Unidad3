@@ -5,7 +5,11 @@
             MessageBox.Show("El monto ingresado se encuentra fuera del rango")
             Return
         End If
-        txtImpuesto.Text = impuestos.calcular(Double.Parse(txtActivo.Text)).ToString("C2")
+        Dim calculo = impuestos.calcular(Double.Parse(txtActivo.Text))
+        If calculo = 0 Then
+            MessageBox.Show("Activo no soportado en tabla de impuestos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+        txtImpuesto.Text = calculo.ToString("C2")
     End Sub
 
     Private Sub CalculoImpuestos_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
